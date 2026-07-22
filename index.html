@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Grid</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-utensils"></i>
+            <span>Recipe Grid</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li><a href="#home">Home</a></li>
+
+            <li><a href="#categories">Categories</a></li>
+
+            <li><a href="#recipes">Recipes</a></li>
+
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+        <div class="nav-right">
+
+            <button class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <a href="#" class="login-btn">
+                Login
+            </a>
+
+            <button class="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+
+    </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <h1>
+            Discover.
+            <br>
+            Cook.
+            <br>
+            Share.
+            <span>Enjoy.</span>
+        </h1>
+
+        <p>
+            Explore delicious recipes from around the world.
+            Find your next favourite meal and share your own creations.
+        </p>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search recipes...">
+
+            <button id="searchBtn">
+                Search
+            </button>
+
+        </div>
+
+        <div class="tags">
+
+            <span>Breakfast</span>
+            <span>Healthy</span>
+            <span>Dessert</span>
+            <span>Chicken</span>
+            <span>Vegetarian</span>
+
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900"
+             alt="Recipe">
+
+    </div>
+
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+
+<section id="categories">
+
+    <div class="section-title">
+
+        <h2>Categories</h2>
+
+        <a href="#">View All</a>
+
+    </div>
+
+    <div class="category-grid">
+
+        <div class="category-card">
+            <i class="fa-solid fa-mug-hot"></i>
+            <h3>Breakfast</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fa-solid fa-burger"></i>
+            <h3>Lunch</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fa-solid fa-drumstick-bite"></i>
+            <h3>Dinner</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fa-solid fa-seedling"></i>
+            <h3>Healthy</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fa-solid fa-cake-candles"></i>
+            <h3>Dessert</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= RECIPES ================= -->
+
+<section id="recipes">
+
+    <div class="section-title">
+
+        <h2>Suggested Recipes</h2>
+
+        <a href="#">View All</a>
+
+    </div>
+
+    <div class="recipe-grid">
+
+        <div class="recipe-card" data-name="pizza">
+
+            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800"
+                 alt="Pizza">
+
+            <div class="recipe-info">
+
+                <h3>Classic Pizza</h3>
+
+                <p>Dinner</p>
+
+                <div class="recipe-footer">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        25 mins
+                    </span>
+
+                    <i class="fa-regular fa-heart heart"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="recipe-card" data-name="salad">
+
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800"
+                 alt="Salad">
+
+            <div class="recipe-info">
+
+                <h3>Fresh Salad</h3>
+
+                <p>Healthy</p>
+
+                <div class="recipe-footer">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        15 mins
+                    </span>
+
+                    <i class="fa-regular fa-heart heart"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="recipe-card" data-name="cake">
+
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800"
+                 alt="Cake">
+
+            <div class="recipe-info">
+
+                <h3>Chocolate Cake</h3>
+
+                <p>Dessert</p>
+
+                <div class="recipe-footer">
+
+                    <span>
+                        <i class="fa-regular fa-clock"></i>
+                        40 mins
+                    </span>
+
+                    <i class="fa-regular fa-heart heart"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURED ================= -->
+
+<section class="featured">
+
+    <div class="featured-image">
+
+        <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?w=900"
+             alt="Featured Recipe">
+
+    </div>
+
+    <div class="featured-text">
+
+        <h2>Featured Recipe</h2>
+
+        <p>
+            Learn how to prepare delicious homemade meals using
+            fresh ingredients with simple step-by-step instructions.
+        </p>
+
+        <a href="#" class="btn">
+            View Recipe
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= SHARE ================= -->
+
+<section class="share">
+
+    <div>
+
+        <h2>Share Your Recipe</h2>
+
+        <p>
+            Inspire others by uploading your favourite recipes.
+        </p>
+
+    </div>
+
+    <a href="#" class="btn">
+        Upload Recipe
+    </a>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="contact">
+
+    <div class="footer-grid">
+
+        <div>
+
+            <h3>Recipe Grid</h3>
+
+            <p>
+                Delicious recipes for every occasion.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#recipes">Recipes</a>
+
+        </div>
+
+        <div>
+
+            <h3>Contact</h3>
+
+            <p>Email: recipe@gmail.com</p>
+            <p>Phone: +94 71 234 5678</p>
+
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 Recipe Grid. All Rights Reserved.
+    </p>
+
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
