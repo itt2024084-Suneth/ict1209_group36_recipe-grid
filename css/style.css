@@ -1,454 +1,329 @@
-/* =====================
-   GENERAL
-===================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
 }
 
-html{
-    scroll-behavior:smooth;
+.hero-section {
+    background-color: #f8f9fa;
+    background:  url('../images/home_bg.png') center/cover no-repeat;
+    min-height: 400px;
 }
 
-body{
-    font-family:'Poppins',sans-serif;
-    background:#f8f8f8;
-    color:#333;
+.search-box {
+    max-width: 550px;
 }
 
-img{
-    width:100%;
-    display:block;
+.search-tag {
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
+.search-tag:hover {
+    background-color: #6c757d !important;
+    color: #ffffff !important;
 }
 
-ul{
-    list-style:none;
+/* Image Dimensions & Responsive Ratios */
+.category-img {
+    width: 90px;
+    height: 90px;
 }
 
-button{
-    border:none;
-    cursor:pointer;
-    font-family:inherit;
+.recipe-card-img {
+    height: 180px;
+    width: 100%;
 }
 
-section{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-    padding:70px 0;
+.featured-banner-img {
+    max-height: 320px;
 }
 
-/* =====================
-   NAVBAR
-===================== */
-
-header{
-    background:#fff;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-    position:sticky;
-    top:0;
-    z-index:100;
+.upload-icon {
+    width: 65px;
+    height: 65px;
 }
 
-.navbar{
-    max-width:1200px;
-    margin:auto;
-    height:75px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 20px;
+/* Card & Interactive Element Styling */
+.bookmark-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    padding: 0;
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:24px;
-    font-weight:600;
-    color:#4CAF50;
+/* Shared Footer Hover Effects */
+footer a:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
 }
 
-.nav-links{
-    display:flex;
-    gap:30px;
+/* Button styling for Category page actions */
+.fav-btn, .bookmark-btn {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    padding: 0;
+    line-height: 1;
 }
 
-.nav-links a{
-    transition:.3s;
+.category-btn.active {
+    background-color: #6c757d !important;
+    color: #ffffff !important;
+    border-color: #6c757d !important;
 }
 
-.nav-links a:hover{
-    color:#4CAF50;
+.recipe-card-img {
+    height: 200px; /* Adjust this height (e.g., 180px - 220px) to fit your desired card size */
+    width: 100%;
 }
 
-.nav-right{
-    display:flex;
-    align-items:center;
-    gap:15px;
+/* Custom Global Defaults */
+a {
+    text-decoration: none;
 }
 
-.search-btn,
-.menu-btn{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:#4CAF50;
-    color:#fff;
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
 }
 
-.login-btn{
-    background:#4CAF50;
-    color:#fff;
-    padding:10px 20px;
-    border-radius:20px;
+.category-img {
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.menu-btn{
-    display:none;
+.recipe-card-img {
+    object-fit: cover;
 }
 
-/* =====================
-   HERO
-===================== */
-
-.hero{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
-    align-items:center;
+/* Base Typography & Defaults */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.hero h1{
-    font-size:55px;
-    line-height:1.2;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.hero h1 span{
-    color:#4CAF50;
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
-.hero p{
-    margin:20px 0;
-    color:#666;
-    line-height:1.7;
+section, header {
+    padding: 3rem 0;
 }
 
-/* =====================
-   SEARCH
-===================== */
-
-.search-box{
-    display:flex;
-    margin:25px 0;
+/* Base Utility Overrides */
+.btn {
+    background-color: #6c757d;
+    color: #fff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.375rem;
 }
 
-.search-box input{
-    flex:1;
-    padding:15px;
-    border:1px solid #ddd;
-    border-radius:10px 0 0 10px;
-    outline:none;
+.badge {
+    background-color: #f8f9fa;
+    color: #212529;
+    border: 1px solid #dee2e6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50rem;
 }
 
-.search-box button{
-    padding:15px 25px;
-    background:#4CAF50;
-    color:#fff;
-    border-radius:0 10px 10px 0;
+/* Header & Banner Styles */
+.hero-section {
+    text-align: center;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
 }
 
-.tags{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+#categories {
+    background-color: #f8f9fa;
 }
 
-.tags span{
-    background:#e8f5e9;
-    color:#4CAF50;
-    padding:8px 15px;
-    border-radius:20px;
-    font-size:14px;
+.category-card {
+    padding: 1rem;
+    border-radius: 0.375rem;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    text-align: center;
 }
 
-/* =====================
-   SECTION TITLE
-===================== */
-
-.section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:30px;
+.category-img {
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
 }
 
-.section-title a{
-    color:#4CAF50;
+/* Cards & Layout */
+.card {
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
 }
 
-/* =====================
-   CATEGORIES
-===================== */
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:20px;
+.recipe-card-img {
+    height: 200px;
+    object-fit: cover;
 }
 
-.category-card{
-    background:#fff;
-    text-align:center;
-    padding:30px 20px;
-    border-radius:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-    transition:.3s;
+.fav-btn {
+    background: transparent;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 0;
 }
 
-.category-card i{
-    font-size:32px;
-    color:#4CAF50;
-    margin-bottom:15px;
+.more-recipes-btn {
+    text-align: right;
+    margin-top: 1.5rem;
 }
 
-.category-card:hover{
-    transform:translateY(-5px);
+/* Upload Banner */
+.upload-banner {
+    background-color: #f8f9fa;
 }
 
-/* =====================
-   RECIPES
-===================== */
-
-.recipe-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:25px;
+.upload-box {
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    border: 1px solid #dee2e6;
 }
 
-.recipe-card{
-    background:#fff;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-    transition:.3s;
+.upload-icon {
+    width: 50px;
+    height: 50px;
+    background: #6c757d;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
 }
 
-.recipe-card:hover{
-    transform:translateY(-5px);
+/* Footer Styles */
+footer {
+    background-color: #212529;
+    color: #fff;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    margin-top: auto;
 }
 
-.recipe-card img{
-    height:220px;
-    object-fit:cover;
+footer a {
+    color: rgba(255, 255, 255, 0.75);
 }
 
-.recipe-info{
-    padding:20px;
+footer p {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
 }
 
-.recipe-info h3{
-    margin-bottom:8px;
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
 }
 
-.recipe-info p{
-    color:#777;
-    margin-bottom:15px;
+.copyright {
+    text-align: center;
+    font-size: 0.875rem;
+    opacity: 0.75;
 }
 
-.recipe-footer{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+/* ==========================================================================
+   Typography & Elements (Replacing Inline Utility Classes)
+   ========================================================================== */
+
+/* Navbar Brand & Links */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.75rem; /* Equivalent to fs-3 */
 }
 
-.heart{
-    color:#888;
-    cursor:pointer;
-    transition:.3s;
+.navbar-nav .nav-link {
+    font-weight: 600;
 }
 
-.heart:hover{
-    color:#e53935;
+/* Card Form Typography */
+.tab-pane h3 {
+    font-weight: 700;
 }
 
-/* =====================
-   FEATURED
-===================== */
-
-.featured{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
-    align-items:center;
+.tab-pane p {
+    color: #6c757d;
+    font-size: 0.875rem; /* Equivalent to small */
 }
 
-.featured img{
-    border-radius:15px;
+.form-label {
+    font-weight: 600;
 }
 
-.featured h2{
-    margin-bottom:20px;
+.form-check-label {
+    color: #6c757d;
+    font-size: 0.875rem;
 }
 
-.featured p{
-    color:#666;
-    line-height:1.8;
-    margin-bottom:25px;
+.tab-pane form a {
+    font-size: 0.875rem;
+    text-decoration: none;
 }
 
-/* =====================
-   BUTTON
-===================== */
-
-.btn{
-    display:inline-block;
-    background:#4CAF50;
-    color:#fff;
-    padding:12px 25px;
-    border-radius:25px;
+.tab-pane form button[type="submit"] {
+    font-weight: 700;
 }
 
-/* =====================
-   SHARE
-===================== */
-
-.share{
-    background:#4CAF50;
-    color:#fff;
-    padding:50px;
-    border-radius:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+#authTabs .nav-link {
+    font-weight: 700;
+    color: #212529;
 }
 
-.share .btn{
-    background:#fff;
-    color:#4CAF50;
+/* Footer Typography */
+footer h4 {
+    font-weight: 700;
 }
 
-/* =====================
-   FOOTER
-===================== */
-
-footer{
-    background:#222;
-    color:#fff;
-    margin-top:70px;
+footer h6 {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
 }
 
-.footer-grid{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-    padding:50px 0;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:30px;
+footer p {
+    font-size: 0.875rem;
+    color: #6c757d; /* Equivalent to text-secondary */
 }
 
-.footer-grid h3{
-    margin-bottom:15px;
-    color:#4CAF50;
+footer p:not(.text-center) {
+    margin-bottom: 0.25rem;
 }
 
-.footer-grid a{
-    display:block;
-    margin-bottom:10px;
-    color:#ddd;
+footer p.text-center {
+    margin-bottom: 0;
 }
 
-.footer-grid p{
-    color:#ccc;
-    line-height:1.7;
+footer ul li a {
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.875rem;
 }
 
-.copyright{
-    text-align:center;
-    padding:20px;
-    border-top:1px solid rgba(255,255,255,.1);
-    color:#aaa;
-}
-
-/* =====================
-   MOBILE
-===================== */
-
-@media(max-width:768px){
-
-    .menu-btn{
-        display:block;
-    }
-
-    .nav-links{
-        display:none;
-        flex-direction:column;
-        position:absolute;
-        top:75px;
-        left:0;
-        width:100%;
-        background:#fff;
-        padding:20px;
-        text-align:center;
-        box-shadow:0 2px 10px rgba(0,0,0,.1);
-    }
-
-    .nav-links.show{
-        display:flex;
-    }
-
-    .hero,
-    .featured{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
-    .hero h1{
-        font-size:40px;
-    }
-
-    .search-box{
-        flex-direction:column;
-    }
-
-    .search-box input{
-        border-radius:10px;
-    }
-
-    .search-box button{
-        border-radius:10px;
-        margin-top:10px;
-    }
-
-    .category-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .recipe-grid{
-        grid-template-columns:1fr;
-    }
-
-    .share{
-        flex-direction:column;
-        text-align:center;
-        gap:20px;
-        padding:35px;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
-    .login-btn{
-        display:none;
-    }
+footer ul li a:hover {
+    color: #ffffff;
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecipeGrid - Home</title>
+    <title>Recipe Grid - Categories</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -23,8 +23,8 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto text-center my-2 my-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="categories.html">Categories</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
                 </ul>
                 <div class="d-flex justify-content-center align-items-center gap-2"><ul class="navbar-nav">
@@ -35,69 +35,37 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero-section">
+    <!-- Category Header & Filter -->
+    <section id="categories-header">
         <div class="container">
-            <h1>Discover, Cook,<br>Share, Enjoy...</h1>
-            <div class="search-box mx-auto" style="max-width: 600px;">
-                <div class="input-group input-group-lg">
-                    <input type="text" id="recipeSearchInput" class="form-control" placeholder="Search recipes..." aria-label="Search recipes">
+            <div class="d-flex justify-content-end mb-4">
+                <div class="input-group search-box">
+                    <input type="text" id="recipeSearchInput" class="form-control" placeholder="Search..." aria-label="Search">
                     <button class="btn" type="button" id="searchBtn">Search</button>
                 </div>
             </div>
-        </div>
-    </header>
 
-    <!-- Categories Section -->
-    <section id="categories">
-        <div class="container">
             <h2>Categories</h2>
-            
-            <div class="row">
-                <div class="col-6 col-md-3">
-                    <div class="category-card">
-                        <a href="categories.html">
-                            <img src="images/cat_breakfast.jpg" alt="Breakfast" class="img-fluid category-img">
-                            <h6>Breakfast</h6>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="category-card">
-                        <a href="categories.html">
-                            <img src="images/cat_lunch.jpg" alt="Lunch" class="img-fluid category-img">
-                            <h6>Lunch</h6>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="category-card">
-                        <a href="categories.html">
-                            <img src="images/cat_dinner.jpg" alt="Dinner" class="img-fluid category-img">
-                            <h6>Dinner</h6>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="category-card">
-                        <a href="categories.html">
-                            <img src="images/cat_dessert.jpg" alt="Dessert" class="img-fluid category-img">
-                            <h6>Dessert</h6>
-                        </a>
-                    </div>
-                </div>
+            <div class="d-flex flex-wrap gap-2" id="categoryFilterGroup">
+                <button type="button" class="btn category-btn active" data-category="all">All</button>
+                <button type="button" class="btn category-btn" data-category="breakfast">Breakfast</button>
+                <button type="button" class="btn category-btn" data-category="lunch">Lunch</button>
+                <button type="button" class="btn category-btn" data-category="dinner">Dinner</button>
+                <button type="button" class="btn category-btn" data-category="vegetarian">Vegetarian</button>
+                <button type="button" class="btn category-btn" data-category="dessert">Dessert</button>
             </div>
         </div>
     </section>
 
-    <!-- Recipes Section -->
+    <!-- Recipes Grid -->
     <section id="recipes">
         <div class="container">
-            <h2>Suggested Recipes</h2>
+            <h2>Recipes</h2>
             
             <div class="row" id="recipeContainer">
+                
                 <!-- Recipe 1 -->
-                <div class="col-12 col-sm-6 col-lg-3 recipe-item" data-category="dinner" data-title="recipe 1 dinner">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 recipe-item" data-category="dinner" data-title="recipe 1 dinner">
                     <div class="card h-100">
                         <a href="recipe.html?id=1">
                             <img src="images/recipe_01.jpg" class="card-img-top recipe-card-img" alt="Recipe 1">
@@ -116,18 +84,18 @@
                 </div>
 
                 <!-- Recipe 2 -->
-                <div class="col-12 col-sm-6 col-lg-3 recipe-item" data-category="breakfast" data-title="recipe 4 breakfast">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 recipe-item" data-category="lunch" data-title="recipe 2 lunch">
                     <div class="card h-100">
-                        <a href="recipe.html?id=4">
-                            <img src="images/recipe_04.jpg" class="card-img-top recipe-card-img" alt="Recipe 4">
+                        <a href="recipe.html?id=2">
+                            <img src="images/recipe_02.jpg" class="card-img-top recipe-card-img" alt="Recipe 2">
                             <div class="card-body">
-                                <h5 class="card-title">Recipe 4</h5>
+                                <h5 class="card-title">Recipe 2</h5>
                             </div>
                         </a>
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div>
-                                <span class="badge">Breakfast</span>
-                                <small>🕒 35 mins</small>
+                                <span class="badge">Lunch</span>
+                                <small>🕒 20 mins</small>
                             </div>
                             <button class="btn fav-btn" title="Favorite">♡</button>
                         </div>
@@ -135,7 +103,7 @@
                 </div>
 
                 <!-- Recipe 3 -->
-                <div class="col-12 col-sm-6 col-lg-3 recipe-item" data-category="dessert" data-title="recipe 3 dessert">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 recipe-item" data-category="dessert" data-title="recipe 3 dessert">
                     <div class="card h-100">
                         <a href="recipe.html?id=3">
                             <img src="images/recipe_03.jpg" class="card-img-top recipe-card-img" alt="Recipe 3">
@@ -154,48 +122,68 @@
                 </div>
 
                 <!-- Recipe 4 -->
-                <div class="col-12 col-sm-6 col-lg-3 recipe-item" data-category="lunch" data-title="recipe 2 lunch">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 recipe-item" data-category="breakfast" data-title="recipe 4 breakfast">
                     <div class="card h-100">
-                        <a href="recipe.html?id=2">
-                            <img src="images/recipe_02.jpg" class="card-img-top recipe-card-img" alt="Recipe 2">
+                        <a href="recipe.html?id=4">
+                            <img src="images/recipe_04.jpg" class="card-img-top recipe-card-img" alt="Recipe 4">
                             <div class="card-body">
-                                <h5 class="card-title">Recipe 2</h5>
+                                <h5 class="card-title">Recipe 4</h5>
                             </div>
                         </a>
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div>
-                                <span class="badge">Lunch</span>
-                                <small>🕒 20 mins</small>
+                                <span class="badge">Breakfast</span>
+                                <small>🕒 35 mins</small>
                             </div>
                             <button class="btn fav-btn" title="Favorite">♡</button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="more-recipes-btn">
-                <a href="categories.html" class="btn">More Recipes &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Upload CTA Banner -->
-    <section class="upload-banner">
-        <div class="container">
-            <div class="upload-box">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-2">
-                        <div class="upload-icon mx-auto">⬆</div>
-                    </div>
-                    <div class="col-12 col-md-7">
-                        <h4>Share Your Recipe with The World</h4>
-                        <p>Have a favorite recipe? Upload it and inspire others with your delicious creation.</p>
-                    </div>
-                    <div class="col-12 col-md-3">
-                        <a href="upload.html" class="btn">Upload Recipe</a>
+                <!-- Recipe 5 -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 recipe-item" data-category="dinner" data-title="recipe 5 dinner">
+                    <div class="card h-100">
+                        <a href="recipe.html?id=5">
+                            <img src="images/recipe_05.jpg" class="card-img-top recipe-card-img" alt="Recipe 5">
+                            <div class="card-body">
+                                <h5 class="card-title">Recipe 5</h5>
+                            </div>
+                        </a>
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="badge">Dinner</span>
+                                <small>🕒 25 mins</small>
+                            </div>
+                            <button class="btn fav-btn" title="Favorite">♡</button>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Recipe 6 -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 recipe-item" data-category="lunch" data-title="recipe 6 lunch">
+                    <div class="card h-100">
+                        <a href="recipe.html?id=6">
+                            <img src="images/recipe_06.jpg" class="card-img-top recipe-card-img" alt="Recipe 6">
+                            <div class="card-body">
+                                <h5 class="card-title">Recipe 6</h5>
+                            </div>
+                        </a>
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="badge">Lunch</span>
+                                <small>🕒 60 mins</small>
+                            </div>
+                            <button class="btn fav-btn" title="Favorite">♡</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+            <div class="text-center mt-5">
+                <p>👨‍🍳 More recipes coming soon...</p>
+            </div>
+
         </div>
     </section>
 
