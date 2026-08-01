@@ -25,6 +25,46 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+    //login,signup
+    const authTabButtons = document.querySelectorAll('#authTabs [data-bs-toggle="pill"]');
+
+    authTabButtons.forEach(button => {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            authTabButtons.forEach(btn => {
+                btn.classList.remove("active");
+                btn.setAttribute("aria-selected", "false");
+            });
+
+            this.classList.add("active");
+            this.setAttribute("aria-selected", "true");
+
+            const targetPaneId = this.getAttribute("data-bs-target");
+            const allPanes = document.querySelectorAll(".tab-content .tab-pane");
+
+            allPanes.forEach(pane => {
+                pane.classList.remove("show", "active");
+            });
+
+            const targetPane = document.querySelector(targetPaneId);
+            if (targetPane) {
+                targetPane.classList.add("show", "active");
+            }
+        });
+    });
+
+    // navbar button
+    const toggler = document.querySelector(".navbar-toggler");
+    const navCollapse = document.getElementById("navbarNav");
+
+    if (toggler && navCollapse) {
+        toggler.addEventListener("click", function () {
+            navCollapse.classList.toggle("show");
+            const isExpanded = navCollapse.classList.contains("show");
+            toggler.setAttribute("aria-expanded", isExpanded);
+        });
+    }
 
     categoryButtons.forEach(button => {
         button.addEventListener("click", function (e) {

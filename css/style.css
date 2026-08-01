@@ -25,7 +25,6 @@
     color: #ffffff !important;
 }
 
-/* Image Dimensions & Responsive Ratios */
 .category-img {
     width: 90px;
     height: 90px;
@@ -45,7 +44,6 @@
     height: 65px;
 }
 
-/* Card & Interactive Element Styling */
 .bookmark-btn {
     width: 40px;
     height: 40px;
@@ -56,13 +54,11 @@
     padding: 0;
 }
 
-/* Shared Footer Hover Effects */
 footer a:hover {
     color: #ffffff !important;
     text-decoration: underline !important;
 }
 
-/* Button styling for Category page actions */
 .fav-btn, .bookmark-btn {
     width: 36px;
     height: 36px;
@@ -81,11 +77,10 @@ footer a:hover {
 }
 
 .recipe-card-img {
-    height: 200px; /* Adjust this height (e.g., 180px - 220px) to fit your desired card size */
+    height: 200px;
     width: 100%;
 }
 
-/* Custom Global Defaults */
 a {
     text-decoration: none;
 }
@@ -103,7 +98,6 @@ h1, h2, h3, h4, h5, h6 {
     object-fit: cover;
 }
 
-/* Base Typography & Defaults */
 body {
     display: flex;
     flex-direction: column;
@@ -124,7 +118,6 @@ section, header {
     padding: 3rem 0;
 }
 
-/* Base Utility Overrides */
 .btn {
     background-color: #6c757d;
     color: #fff;
@@ -140,7 +133,6 @@ section, header {
     border-radius: 50rem;
 }
 
-/* Header & Banner Styles */
 .hero-section {
     text-align: center;
     background-color: #f8f9fa;
@@ -164,7 +156,6 @@ section, header {
     margin-bottom: 0.5rem;
 }
 
-/* Cards & Layout */
 .card {
     border-radius: 0.5rem;
     overflow: hidden;
@@ -191,7 +182,7 @@ section, header {
     margin-top: 1.5rem;
 }
 
-/* Upload Banner */
+/* Uploads */
 .upload-banner {
     background-color: #f8f9fa;
 }
@@ -247,11 +238,7 @@ footer p {
     opacity: 0.75;
 }
 
-/* ==========================================================================
-   Typography & Elements (Replacing Inline Utility Classes)
-   ========================================================================== */
-
-/* Navbar Brand & Links */
+/* Navbar */
 .navbar-brand {
     font-weight: 700;
     font-size: 1.75rem; /* Equivalent to fs-3 */
@@ -261,14 +248,13 @@ footer p {
     font-weight: 600;
 }
 
-/* Card Form Typography */
 .tab-pane h3 {
     font-weight: 700;
 }
 
 .tab-pane p {
     color: #6c757d;
-    font-size: 0.875rem; /* Equivalent to small */
+    font-size: 0.875rem; 
 }
 
 .form-label {
@@ -294,7 +280,7 @@ footer p {
     color: #212529;
 }
 
-/* Footer Typography */
+/* Footer text */
 footer h4 {
     font-weight: 700;
 }
@@ -307,7 +293,7 @@ footer h6 {
 
 footer p {
     font-size: 0.875rem;
-    color: #6c757d; /* Equivalent to text-secondary */
+    color: #6c757d; 
 }
 
 footer p:not(.text-center) {
