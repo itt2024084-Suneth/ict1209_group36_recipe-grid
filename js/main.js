@@ -183,9 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 setTimeout(() => {
                     const loginTabTrigger = document.getElementById("login-tab");
-                    if (loginTabTrigger && window.bootstrap) {
-                        const tabInstance = new bootstrap.Tab(loginTabTrigger);
-                        tabInstance.show();
+                    if (loginTabTrigger) {
+                        loginTabTrigger.click();
                     }
 
                     pageRegisterForm.reset();
@@ -259,4 +258,23 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
     }
+
+    // recipe upload form validation
+    const recipeUploadForm = document.getElementById("recipeUploadForm");
+
+    if (recipeUploadForm) {
+        recipeUploadForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            if (!recipeUploadForm.checkValidity()) {
+                e.stopPropagation();
+                recipeUploadForm.classList.add("was-validated");
+            } else {
+                recipeUploadForm.classList.remove("was-validated");
+                alert("Recipe uploaded successfully!");
+                recipeUploadForm.reset();
+            }
+        });
+    }
+
 });
