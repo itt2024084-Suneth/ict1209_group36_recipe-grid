@@ -1,18 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // filtering
+    // Filtering & Category Initialization
     const categoryButtons = document.querySelectorAll(".category-btn");
     const recipeItems = document.querySelectorAll(".recipe-item");
     const searchInput = document.getElementById("recipeSearchInput");
     const searchBtn = document.getElementById("searchBtn");
 
-    let activeCategory = "all";
+    // Extract initial category from URL query parameters (e.g., categories.php?cat=breakfast)
+    const urlParams = new URLSearchParams(window.location.search);
+    let activeCategory = (urlParams.get("cat") || "all").toLowerCase();
+    if (activeCategory === "desserts") activeCategory = "dessert";
+
+    // Set active class on category button matching URL query param
+    categoryButtons.forEach(btn => {
+        let btnCat = (btn.dataset.category || "all").toLowerCase();
+        if (btnCat === "desserts") btnCat = "dessert";
+
+        if (btnCat === activeCategory) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
 
     function filterRecipes() {
         const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
 
         recipeItems.forEach(item => {
-            const itemCategory = (item.dataset.category || "").toLowerCase();
+            let itemCategory = (item.dataset.category || "").toLowerCase();
+            if (itemCategory === "desserts") itemCategory = "dessert";
+            
             const itemTitle = (item.dataset.title || "").toLowerCase();
 
             const matchesCategory = (activeCategory === "all" || itemCategory === activeCategory);
@@ -25,7 +42,31 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-    //login,signup
+
+    // Run initial filter on page load
+    filterRecipes();
+
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            categoryButtons.forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            activeCategory = (this.dataset.category || "all").toLowerCase();
+            if (activeCategory === "desserts") activeCategory = "dessert";
+
+            filterRecipes();
+        });
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener("input", filterRecipes);
+    }
+    if (searchBtn) {
+        searchBtn.addEventListener("click", filterRecipes);
+    }
+
+    // Auth Tab Switchers (for unified login/register UI)
     const authTabButtons = document.querySelectorAll('#authTabs [data-bs-toggle="pill"]');
 
     authTabButtons.forEach(button => {
@@ -54,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // navbar button
+    // Navbar Toggle Behavior
     const toggler = document.querySelector(".navbar-toggler");
     const navCollapse = document.getElementById("navbarNav");
 
@@ -66,25 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    categoryButtons.forEach(button => {
-        button.addEventListener("click", function (e) {
-            e.preventDefault();
-            categoryButtons.forEach(btn => btn.classList.remove("active"));
-            this.classList.add("active");
-
-            activeCategory = (this.dataset.category || "all").toLowerCase();
-            filterRecipes();
-        });
-    });
-
-    if (searchInput) {
-        searchInput.addEventListener("input", filterRecipes);
-    }
-    if (searchBtn) {
-        searchBtn.addEventListener("click", filterRecipes);
-    }
-
-    // bookmark and favorite toggles
+    // Bookmark & Favorite Toggles
     document.querySelectorAll(".bookmark-btn").forEach(button => {
         button.addEventListener("click", function () {
             if (this.textContent.trim() === "+") {
@@ -109,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // contact form
+    // Contact Form Counter & Validation
     const contactForm = document.getElementById("contactForm");
     const formAlert = document.getElementById("formAlert");
     const userMessage = document.getElementById("userMessage");
@@ -141,126 +164,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }, false);
     }
 
-    // auth forms
-    const pageLoginForm = document.getElementById("pageLoginForm");
-    const pageRegisterForm = document.getElementById("pageRegisterForm");
-    const pageAuthAlert = document.getElementById("pageAuthAlert");
-
-    if (pageLoginForm) {
-        pageLoginForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            if (!pageLoginForm.checkValidity()) {
-                e.stopPropagation();
-                pageLoginForm.classList.add("was-validated");
-            } else {
-                pageLoginForm.classList.remove("was-validated");
-
-                pageAuthAlert.className = "alert alert-success mb-3";
-                pageAuthAlert.textContent = "Logged in successfully! Redirecting...";
-                pageAuthAlert.classList.remove("d-none");
-
-                setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 1500);
-            }
-        });
-    }
-
-    if (pageRegisterForm) {
-        pageRegisterForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            if (!pageRegisterForm.checkValidity()) {
-                e.stopPropagation();
-                pageRegisterForm.classList.add("was-validated");
-            } else {
-                pageRegisterForm.classList.remove("was-validated");
-
-                pageAuthAlert.className = "alert alert-success mb-3";
-                pageAuthAlert.textContent = "Account created successfully! You can now log in.";
-                pageAuthAlert.classList.remove("d-none");
-
-                setTimeout(() => {
-                    const loginTabTrigger = document.getElementById("login-tab");
-                    if (loginTabTrigger) {
-                        loginTabTrigger.click();
-                    }
-
-                    pageRegisterForm.reset();
-                    pageAuthAlert.classList.add("d-none");
-                }, 1500);
-            }
-        });
-    }
-
-    // recipe details
-    const recipeData = {
-        "1": { title: "Recipe 1", category: "Dinner", time: "25 mins", servings: "2-4", image: "images/recipe_01.jpg", description: "Recipe description...", ingredients: ["Ingredient 1", "Ingredient 2"], instructions: ["Step 1", "Step 2"] },
-        "2": { title: "Recipe 2", category: "Lunch", time: "20 mins", servings: "1-2", image: "images/recipe_02.jpg", description: "Recipe description...", ingredients: ["Ingredient 1", "Ingredient 2"], instructions: ["Step 1", "Step 2"] },
-        "3": { title: "Recipe 3", category: "Dessert", time: "30 mins", servings: "4-6", image: "images/recipe_03.jpg", description: "Recipe description...", ingredients: ["Ingredient 1", "Ingredient 2"], instructions: ["Step 1", "Step 2"] },
-        "4": { title: "Recipe 4", category: "Breakfast", time: "35 mins", servings: "2", image: "images/recipe_04.jpg", description: "Recipe description...", ingredients: ["Ingredient 1", "Ingredient 2"], instructions: ["Step 1", "Step 2"] },
-        "5": { title: "Recipe 5", category: "Dinner", time: "25 mins", servings: "4", image: "images/recipe_05.jpg", description: "Recipe description...", ingredients: ["Ingredient 1", "Ingredient 2"], instructions: ["Step 1", "Step 2"] },
-        "6": { title: "Recipe 6", category: "Lunch", time: "60 mins", servings: "6", image: "images/recipe_06.jpg", description: "Recipe description...", ingredients: ["Ingredient 1", "Ingredient 2"], instructions: ["Step 1", "Step 2"] }
-    };
-
-    const recipeDetailContainer = document.getElementById("recipeDetailContainer");
-
-    if (recipeDetailContainer) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const recipeId = urlParams.get("id") || "1";
-        const recipe = recipeData[recipeId] || recipeData["1"];
-
-        document.title = `Recipe Grid - ${recipe.title}`;
-
-        recipeDetailContainer.innerHTML = `
-            <div class="row g-4 align-items-center mb-5">
-                <div class="col-12 col-md-6">
-                    <img src="${recipe.image}" class="img-fluid rounded-4 shadow-sm w-100 object-fit-cover" style="max-height: 400px;" alt="${recipe.title}">
-                </div>
-                <div class="col-12 col-md-6">
-                    <span class="badge bg-light rounded-pill px-3 py-2 mb-2">${recipe.category}</span>
-                    <h1 class="fw-bold mb-3">${recipe.title}</h1>
-                    <p class="text-muted leading-relaxed">${recipe.description}</p>
-                    
-                    <div class="d-flex gap-4 border-top border-bottom py-3 my-4">
-                        <div>
-                            <small class="text-muted d-block">PREP TIME</small>
-                            <span class="fw-bold">🕒 ${recipe.time}</span>
-                        </div>
-                        <div>
-                            <small class="text-muted d-block">SERVINGS</small>
-                            <span class="fw-bold">🍽️ ${recipe.servings}</span>
-                        </div>
-                    </div>
-
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-outline-danger rounded-pill px-4 fav-btn">♡</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-5">
-                <div class="col-12 col-md-5">
-                    <div class="card border-0 bg-light p-4 rounded-4">
-                        <h4 class="fw-bold mb-3">Ingredients</h4>
-                        <ul class="list-group list-group-flush bg-transparent">
-                            ${recipe.ingredients.map(item => `<li class="list-group-item bg-transparent px-0 border-bottom-subtle">✓ ${item}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-12 col-md-7">
-                    <h4 class="fw-bold mb-3">Instructions</h4>
-                    <ol class="list-group list-group-numbered list-group-flush">
-                        ${recipe.instructions.map(step => `<li class="list-group-item px-0 py-3 border-bottom-subtle leading-relaxed">${step}</li>`).join('')}
-                    </ol>
-                </div>
-            </div>
-        `;
-    }
-
-    // recipe upload form validation
+    // Recipe Upload Form Handler (Asynchronous PHP Upload)
     const recipeUploadForm = document.getElementById("recipeUploadForm");
+    const recipeUploadAlert = document.getElementById("recipeUploadAlert");
 
     if (recipeUploadForm) {
         recipeUploadForm.addEventListener("submit", function (e) {
@@ -269,11 +175,38 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!recipeUploadForm.checkValidity()) {
                 e.stopPropagation();
                 recipeUploadForm.classList.add("was-validated");
-            } else {
-                recipeUploadForm.classList.remove("was-validated");
-                alert("Recipe uploaded successfully!");
-                recipeUploadForm.reset();
+                return;
             }
+
+            const formData = new FormData(recipeUploadForm);
+
+            fetch("actions/upload_recipe.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (recipeUploadAlert) {
+                    recipeUploadAlert.className = `alert alert-${data.status === 'success' ? 'success' : 'danger'} mb-3`;
+                    recipeUploadAlert.textContent = data.message;
+                    recipeUploadAlert.classList.remove("d-none");
+                }
+
+                if (data.status === "success") {
+                    recipeUploadForm.reset();
+                    recipeUploadForm.classList.remove("was-validated");
+                    setTimeout(() => {
+                        window.location.href = "index.php";
+                    }, 1500);
+                }
+            })
+            .catch(() => {
+                if (recipeUploadAlert) {
+                    recipeUploadAlert.className = "alert alert-danger mb-3";
+                    recipeUploadAlert.textContent = "An error occurred while uploading. Please try again.";
+                    recipeUploadAlert.classList.remove("d-none");
+                }
+            });
         });
     }
 
