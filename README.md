@@ -1,125 +1,112 @@
-# ict1209_group36_recipe-grid
+# RecipeGrid
 
-RecipeGrid - Interactive Database-Driven Culinary Management Platform
+A database-driven recipe website built for the ICT 1209 (Web Technologies) first year, second semester mini project.
 
-Course: ICT 1209 - Web Technologies
-Assignment: First Year Second Semester Mini Project
-Group: Group 36
-Members:- H.M.S. Premakumara | Registration No: ITT/2024/084 | Index: 2769
-          M.A.V.R. Perera    | Registration No: ITT/2024/081 | Index: 2766
+**Group 36**
 
+| Name | Registration No | Index |
+|---|---|---|
+| H.M.S. Premakumara | ITT/2024/084 | 2769 |
+| M.A.V.R. Perera | ITT/2024/081 | 2766 |
 
-1. PROJECT THEME & OVERVIEW
+## About
 
-RecipeGrid is a database-driven digital recipe book designed to organize 
-culinary content, simplify meal discovery, and enable community recipe 
-sharing.
+RecipeGrid is an online recipe book. Recipes are stored in a MySQL database, and anyone can browse and search them. Registered users can also upload their own recipes.
 
-The platform aims to solve everyday meal-planning challenges faced by 
-university students needing quick/budget recipes, home cooks building a 
-personal recipe ledger, and health-conscious users searching for dietary 
-options like vegetarian meals.
+We built it with university students in mind (quick and cheap meals), but it is useful for anyone who wants a place to keep recipes or look for vegetarian options.
 
-Main Goals:
-- Centralized Database: Store and manage recipes in an accessible catalog.
-- Community Uploads: Allow registered users to submit custom recipes.
-- Meal Categorization: Filter recipes by dietary tags and meal types.
+## Features
 
+- Browse all recipes in a card grid
+- Search recipes by title
+- Filter recipes by category (Breakfast, Lunch, Dinner, Vegetarian, Desserts, Drinks)
+- Sign up and log in, with form validation
+- Upload your own recipes with an image
+- Bookmark and favourite recipes
+- Live character counter on text inputs
+- Contact form with validation
 
-2. PLANNED & IMPLEMENTED FEATURES
+## Built with
 
-- Dynamic Search & Filter: Real-time search by title and filter buttons 
-  for categories (Breakfast, Lunch, Dinner, Dessert).
-- Interactive UI Elements: Native JavaScript functionality for bookmarking, 
-  favoriting items, and live input character counting.
-- Security & Auth System: Tabbed login and sign-up interface with client-side 
-  validation and status alerts.
-- Contact & Feedback Form: User messaging system with validation.
-- Framework-Free JS Logic: Custom lightweight Vanilla JavaScript replacing 
-  heavy external script dependencies.
+- HTML5, CSS3, Bootstrap 5
+- Vanilla JavaScript (no frameworks)
+- PHP 8
+- MySQL (through XAMPP)
+- Git and GitHub
 
+## Setup
 
-3. TECHNOLOGY STACK
+### Requirements
 
-- Frontend Presentation: HTML5, CSS3, Bootstrap 5 (Styling)
-- Client-Side Logic: Vanilla JavaScript 
-- Backend Operations: PHP 8
-- Database: MySQL (managed via XAMPP)
-- Version Control: GitHub
-
-
-4. SETUP
-
-## 4. SETUP
-
-### 4.1 Requirements
-
-- [XAMPP](https://www.apachefriends.org/) (Apache + MySQL/MariaDB + PHP 8)
+- [XAMPP](https://www.apachefriends.org/) (Apache, MySQL/MariaDB and PHP 8)
 - A web browser
-- Git (optional, only if cloning)
+- Git (only if you want to clone the repository)
 
-### 4.2 Where to put the project files
+### 1. Put the project in htdocs
 
-The project must run through Apache, so it has to live inside XAMPP's `htdocs` folder. Opening the `.php` files directly in the browser will not work.
+The site has to be served by Apache, so the project must be inside XAMPP's `htdocs` folder. Opening the `.php` files directly in the browser will not work.
 
-1. Open XAMPP's `htdocs` folder:
-   - Windows: `C:\xampp\htdocs\`
-   - macOS: `/Applications/XAMPP/htdocs/`
-2. Clone or copy the project into it:
+- Windows: `C:\xampp\htdocs\`
+- macOS: `/Applications/XAMPP/htdocs/`
 
-   ```bash
-   cd C:\xampp\htdocs
-   git clone https://github.com/itt2024084-Suneth/ict1209_group36_recipe-grid.git
-   ```
+Clone or copy the project there:
 
-3. Make sure the files sit directly inside the project folder, not in an extra nested folder:
+```bash
+cd C:\xampp\htdocs
+git clone https://github.com/itt2024084-Suneth/ict1209_group36_recipe-grid.git
+```
 
- 
-   ```
+Make sure the project files are directly inside the project folder and not inside an extra nested folder.
 
-### 4.3 Database setup
+### 2. Import the database
 
 1. Open the XAMPP Control Panel and start **Apache** and **MySQL**.
 2. Go to [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
 3. Click the **Import** tab, choose `recipe_grid.sql` from the project root, and click **Import**.
-   - This creates the `recipe_grid` database with the `users` and `recipes` tables, plus a few sample recipes.
-   - Command line alternative: `mysql -u root < recipe_grid.sql`
 
-### 4.4 Database connection
+This creates the `recipe_grid` database with the `users` and `recipes` tables and adds some sample recipes.
 
-The connection settings are in `config/db.php`. The defaults match a fresh XAMPP install, so no changes are needed:
+You can also import it from the command line:
+
+```bash
+mysql -u root < recipe_grid.sql
+```
+
+### 3. Check the database connection
+
+The connection settings are in `config/db.php`. The defaults work with a fresh XAMPP install:
 
 ```php
 $host = 'localhost';
 $db   = 'recipe_grid';
 $user = 'root';
-$pass = '';   // default XAMPP password is empty
+$pass = '';   // XAMPP's default password is empty
 ```
 
-If your MySQL uses a different username or password, edit `$user` and `$pass` here.
+If your MySQL uses a different username or password, change `$user` and `$pass`.
 
-### 4.5 Run the site
+### 4. Open the site
 
-Open your browser and go to:
+Go to:
 
 ```
 http://localhost/ict1209_group36_recipe-grid/
 ```
 
-(Use whatever name your project folder has inside `htdocs`.)
+Use whatever name your project folder has inside `htdocs`.
 
-To try the upload feature, go to **Log in → Sign Up**, create an account, log in, then use **Upload**.
+To try uploading a recipe, click **Log in**, switch to **Sign Up**, create an account, log in, and then use **Upload**.
 
-### 4.6 Troubleshooting
+## Troubleshooting
 
 | Problem | Fix |
 |---|---|
-| "Database connection failed" | Check that MySQL is running in XAMPP and that `recipe_grid` was imported. |
-| Page shows raw PHP code or downloads the file | The project is not being served by Apache. Use `http://localhost/...`, not a `file://` path. |
-| Uploaded images don't show | Check that the `uploads/` folder exists inside the project and is writable. |
-| Sign up or log in shows a blank page or raw JSON | Make sure `js/main.js` is the latest version and loads without errors (browser console, F12). |
-| `404 Not Found` | The folder name in the URL must match the folder name inside `htdocs`. |
+| "Database connection failed" | Make sure MySQL is running in XAMPP and that `recipe_grid.sql` was imported. |
+| Page shows raw PHP code or downloads the file | The project is not being served by Apache. Use `http://localhost/...` instead of a `file://` path. |
+| Uploaded images don't show | Check that the `uploads/` folder exists in the project and is writable. |
+| Sign up or log in shows a blank page or raw JSON | Make sure `js/main.js` is up to date and loads without errors (check the browser console with F12). |
+| `404 Not Found` | The folder name in the URL must match the folder name in `htdocs`. |
 
+---
 
-
-(c) 2026 RecipeGrid. All Rights Reserved.
+&copy; 2026 RecipeGrid. All rights reserved.

@@ -2,7 +2,6 @@
 session_start();
 require_once 'config/db.php';
 
-// Fetch latest 8 recipes from the database
 try {
     $stmt = $pdo->query("SELECT id, title, category, prep_time, image FROM recipes ORDER BY created_at DESC LIMIT 8");
     $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -121,7 +120,7 @@ try {
                              data-title="<?= strtolower(htmlspecialchars($recipe['title'])) ?>">
                             <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
                                 <a href="recipe.php?id=<?= (int)$recipe['id'] ?>" class="text-decoration-none text-dark">
-                                    <img src="uploads/<?= htmlspecialchars($recipe['image']) ?>" 
+                                    <img src="<?= file_exists(__DIR__ . '/images/' . basename($recipe['image'])) ? 'images/' : 'uploads/' ?><?= htmlspecialchars($recipe['image']) ?>" 
                                          class="card-img-top recipe-card-img object-fit-cover" 
                                          style="height: 200px;"
                                          alt="<?= htmlspecialchars($recipe['title']) ?>"

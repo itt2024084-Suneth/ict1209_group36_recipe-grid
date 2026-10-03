@@ -2,7 +2,7 @@
 session_start();
 require_once 'config/db.php';
 
-// Get recipe ID from URL parameter
+
 $recipeId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 $recipe = null;
 
@@ -66,7 +66,7 @@ if ($recipeId > 0) {
             <?php if ($recipe): ?>
                 <div class="row g-4">
                     <div class="col-12 col-md-6">
-                        <img src="uploads/<?= htmlspecialchars($recipe['image']) ?>" 
+                        <img src="<?= file_exists(__DIR__ . '/images/' . basename($recipe['image'])) ? 'images/' : 'uploads/' ?><?= htmlspecialchars($recipe['image']) ?>" 
                              class="img-fluid rounded-3 shadow-sm w-100 object-fit-cover" 
                              style="max-height: 400px;" 
                              alt="<?= htmlspecialchars($recipe['title']) ?>"

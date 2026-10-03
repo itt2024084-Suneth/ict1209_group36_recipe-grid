@@ -2,10 +2,8 @@
 session_start();
 require_once 'config/db.php';
 
-// Get selected category from URL query string if present
 $selectedCategory = isset($_GET['cat']) ? strtolower(trim($_GET['cat'])) : 'all';
 
-// Fetch all recipes dynamically from the database
 try {
     $stmt = $pdo->query("SELECT id, title, category, prep_time, image FROM recipes ORDER BY created_at DESC");
     $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -87,7 +85,6 @@ try {
                 <?php if (!empty($recipes)): ?>
                     <?php foreach ($recipes as $recipe): 
                         $recipeCat = strtolower(htmlspecialchars($recipe['category']));
-                        // Handle initial category filtering based on GET parameter
                         $hideClass = ($selectedCategory !== 'all' && strtolower($selectedCategory) !== $recipeCat && !(in_array($selectedCategory, ['dessert', 'desserts']) && in_array($recipeCat, ['dessert', 'desserts']))) ? 'd-none' : '';
                     ?>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 recipe-item mb-4 <?= $hideClass ?>" 
@@ -95,7 +92,7 @@ try {
                              data-title="<?= strtolower(htmlspecialchars($recipe['title'])) ?>">
                             <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden">
                                 <a href="recipe.php?id=<?= $recipe['id'] ?>" class="text-decoration-none text-dark">
-                                    <img src="uploads/<?= htmlspecialchars($recipe['image']) ?>" 
+                                    <img src="<?= file_exists(__DIR__ . '/images/' . basename($recipe['image'])) ? 'images/' : 'uploads/' ?><?= htmlspecialchars($recipe['image']) ?>" 
                                          class="card-img-top recipe-card-img" 
                                          alt="<?= htmlspecialchars($recipe['title']) ?>"
                                          onerror="this.src='images/recipe_01.jpg';">

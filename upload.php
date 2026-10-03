@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Redirect unauthenticated users to the login page
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
